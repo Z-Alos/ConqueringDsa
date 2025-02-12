@@ -1,0 +1,13 @@
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        //Index: Where the non zero element should be 
+        int nonZeroLastIndex=0;
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]!=0){
+                swap(nums[nonZeroLastIndex],nums[i]);
+                nonZeroLastIndex++; //Shift Index: Non Zero Element
+            }
+        }
+    }
+};

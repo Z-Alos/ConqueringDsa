@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        
+        //Maths Magic: the middle of the arr
+        //when sorted give the majority element
+        //Simple & Fast but
+        //O(n log n)
+        /*sort(nums.begin(),nums.end());
+        return nums[nums.size()/2];*/
+        
+        //Boyer-Moore Algo
+        //O(n)
+        int candidate, count = 0;
+        for(const int &num: nums){
+            if(count == 0) candidate = num;
+            count += (num == candidate) ? 1 : -1;
+        }
+        return candidate;
+    }
+}; 

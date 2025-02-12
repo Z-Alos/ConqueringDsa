@@ -1,0 +1,14 @@
+//barely gets the work done for leet code but its not a good approach 
+//hashmap is much better
+//but for learning array its good
+class Solution {
+public:
+    bool containsNearbyDuplicate(vector<int>& nums, int k) {
+    for (int i = 0; i < nums.size(); i++) {
+        for (int j = i + 1; j <= i + k && j < nums.size(); j++) {
+            if (nums[i] == nums[j]) return true;
+        }
+    }
+    return false;
+}
+};

@@ -1,0 +1,82 @@
+// for noobs
+// class Solution {
+// public:
+//     vector<string> findWords(vector<string>& words) {
+//         vector<string> result;  
+//         bool isValid=true;
+//         for(const string& word: words){
+//             isValid=true;
+//             string row = getRow(word);   
+//             for(int i=0;i<word.size();i++){
+//             if(!isValid){
+//                 break;
+//             }
+//             bool found=false;
+//             for (int j = 0; j < row.size(); j++)
+//             {
+//                 if(tolower(word[i])== row[j]){
+//                     found=true;
+//                 }
+//                 if(!found && j==row.size()-1){
+//                     isValid=false;
+//                     break;
+//                 }
+//                 if(tolower(word[i])==row[j] && i==word.size()-1){
+//                     result.push_back(word); 
+//                 }
+//             }
+//             }
+//         } 
+//         return result;
+//     }
+
+//     string getRow(const string& word){
+//         string firstRow  = "qwertyuiop";
+//         string secondRow = "asdfghjkl";
+//         string thirdRow = "zxcvbnm";
+
+//         for(int i=0;i<firstRow.size();i++){
+//             if(tolower(word[0]) == firstRow[i]){
+//                 return firstRow;    
+//             }
+//         }
+
+//         for(int i=0;i<secondRow.size();i++){
+//             if(tolower(word[0]) == secondRow[i]){
+//                 return secondRow;    
+//             }
+//         }
+        
+//         for(int i=0;i<thirdRow.size();i++){
+//             if(tolower(word[0]) == thirdRow[i]){
+//                 return thirdRow;    
+//             }
+//         }
+//         return "";
+//     }
+// };
+
+// Better Approach (Same Thing)
+class Solution {
+public:
+    vector<string> findWords(vector<string>& words) {
+        vector<string> result;
+        string r1 = "qwertyuiop";
+        string r2 = "asdfghjkl";
+        string r3 = "zxcvbnm";
+
+        for(int i=0;i<words.size();i++){
+            int a=0,b=0,c=0;
+            for(int j=0;j<words[i].size();j++){
+                if(r1.find(tolower(words[i][j])) != string::npos) a++;
+                else if(r2.find(tolower(words[i][j])) != string::npos) b++;
+                else if(r3.find(tolower(words[i][j])) != string::npos) c++;
+            }
+
+            if(a==words[i].size() || b==words[i].size() || c==words[i].size()){
+                result.push_back(words[i]);        
+            }
+        }
+        return result;
+    }
+};

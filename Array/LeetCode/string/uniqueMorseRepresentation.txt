@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int uniqueMorseRepresentations(vector<string>& words) {
+        vector<string> morse = {".-",   "-...", "-.-.", "-..",  ".",    "..-.",
+                                "--.",  "....", "..",   ".---", "-.-",  ".-..",
+                                "--",   "-.",   "---",  ".--.", "--.-", ".-.",
+                                "...",  "-",    "..-",  "...-", ".--",  "-..-",
+                                "-.--", "--.."};
+        vector<string> result;
+
+        for (const string& word : words) {
+            string concat = "";
+            for (int j = 0; j < word.size(); j++) {
+                int idx = static_cast<int>(word[j]) - 97;
+                concat += morse[idx];
+            }
+            if (find(result.begin(), result.end(), concat) == result.end() ||
+                result.empty()) {
+                result.push_back(concat);
+            }
+        }
+        return result.size();
+    }
+};
